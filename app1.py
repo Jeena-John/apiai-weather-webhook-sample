@@ -10,6 +10,7 @@ from urllib.error import HTTPError
 
 import json
 import os
+import csv
 
 from flask import Flask
 from flask import request
@@ -38,7 +39,7 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "order_phone":
         return {}
-    baseurl = "https://git.heroku.com/pure-everglades-83159.git"
+    baseurl = ""
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
@@ -57,15 +58,16 @@ def makeYqlQuery(req):
     if OS is None:
         return None
 
-    import csv
-
-path = 'https://github.com/Jeena-John/apiai-weather-webhook-sample/blob/master'
-file=open( path +"xyz.CSV", "r")
-reader = csv.reader(file)
-for line in reader:
-    t=line[1],line[2]
-    print(t)
-
+    
+with open("tyy-4io.csv","r")as ins:
+    for line in ins:
+        print line
+                
+     if not somestring.contains("Apple"):
+        continue
+    
+       
+    
 
 def makeWebhookResult(data):
     query = data.get('query')
