@@ -10,7 +10,6 @@ from urllib.error import HTTPError
 
 import json
 import os
-import csv
 
 from flask import Flask
 from flask import request
@@ -58,10 +57,14 @@ def makeYqlQuery(req):
     if OS is None:
         return None
 
-     with open('tyy-4io') as csvfile:
-          reader = csvDictReader(csvfile)
-          for row in reader:
-              print(row['productId'],row['title'])
+    import csv
+
+path = 'https://github.com/Jeena-John/apiai-weather-webhook-sample/blob/master'
+file=open( path +"xyz.CSV", "r")
+reader = csv.reader(file)
+for line in reader:
+    t=line[1],line[2]
+    print(t)
 
 
 def makeWebhookResult(data):
