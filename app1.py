@@ -61,10 +61,8 @@ def makeYqlQuery(req):
     
 with open("tyy-4io.csv","r")as ins:
     for line in ins:
-        print line
-                
-     if not somestring.contains("Apple"):
-        continue
+       if line.contains("Apple"):
+        return line
     
        
     
@@ -94,14 +92,14 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
 
-    speech = "How many mega pixel camera do you like?"
+    #speech = "How many mega pixel camera do you like?"
     print("Response:")
-    print(speech)
+    print(data)
 
     return {
-        "speech": speech,
-        "displayText": speech,
-        "data": {"telegram":speech},
+        "speech": data,
+        "displayText": data,
+        "data": {"telegram":data},
         #"contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
