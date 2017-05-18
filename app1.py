@@ -58,10 +58,10 @@ def makeYqlQuery(req):
     if OS is None:
         return None
 
-     with open('tyy-4io',newline='') as f:
-          reader = csv.reader(f)
+     with open('tyy-4io') as csvfile:
+          reader = csvDictReader(csvfile)
           for row in reader:
-              print(row)
+              print(row['productId'],row['title'])
 
 
 def makeWebhookResult(data):
