@@ -86,9 +86,16 @@ def makeWebhookResult(data,OS):
     # print(json.dumps(item, indent=4))
 
    # speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+          #   ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
 
-    speech="OS"
+    with open("tyy-4io.txt","r")as ins:
+        for line in ins:
+            if OS in line:
+                matched_line=line
+                break
+                columns=matched_line.split('\t')
+                
+    speech="OS"+columns[0]
     print("Response:")
     print(speech)
 
