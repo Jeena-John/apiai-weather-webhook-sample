@@ -64,8 +64,8 @@ def makeWebhookResult(OS):
     price = columns[4]
     productUrl = columns[5]
     
-    #speech="Here is a phone that suits your needs " + title + " priced at Rs." + price  + ".More details at  " + productUrl 
-    speech = title + price + productUrl
+    speech="Here is a phone that suits your needs " + title + " priced at Rs." + price + ".More details at  " + productUrl 
+    #speech = title + price + productUrl
     print("Response:")
     print(speech)
 
