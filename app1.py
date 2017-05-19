@@ -39,7 +39,6 @@ def processRequest(req):
     if req.get("result").get("action") != "order_phone":
         return {}
     
-   
     result = req.get("result")
     parameters = result.get("parameters")
     OS = parameters.get("OS")
@@ -58,9 +57,8 @@ def makeWebhookResult(OS):
     with open("tyy-4io.txt","r")as ins:
         for line in ins:
             if OS in line:
-            matched_line=line
-            break
-         
+                matched_line=line
+                break
     columns=matched_line.split('\t')
     title= columns[0]
     price= columns[4]
