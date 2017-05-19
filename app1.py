@@ -36,9 +36,9 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "order_phone":
+    if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
-    baseurl = ""
+    baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
@@ -52,19 +52,12 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
-    OS = parameters.get("OS")
-    print(OS)
-    if OS is None:
+    city = parameters.get("geo-city")
+    if city is None:
         return None
 
-    
-with open("tyy-4io.csv","r")as ins:
-    for line in ins:
-       if line.contains("Apple"):
-        return line
-    
-       
-    
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+
 
 def makeWebhookResult(data):
     query = data.get('query')
@@ -91,15 +84,17 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
 
-    #speech = "How many mega pixel camera do you like?"
+    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+
     print("Response:")
-    print(data)
+    print(speech)
 
     return {
-        "speech": data,
-        "displayText": data,
-        #"data": {"telegram":data},
-        #"contextOut": [],
+        "speech": speech,
+        "displayText": speech,
+        # "data": data,
+        # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
 
