@@ -42,10 +42,10 @@ def processRequest(req):
    
     result = req.get("result")
     parameters = result.get("parameters")
-    city = parameters.get("geo-city")
-    if city is None:
+    OS = parameters.get("OS")
+    if OS is None:
         return {}
-    yql_query ="select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+    yql_query ="OS"
 
     if yql_query is None:
         return {}
@@ -58,14 +58,6 @@ def processRequest(req):
      
     
 
-def makeYqlQuery(req):
-    result = req.get("result")
-    parameters = result.get("parameters")
-    city = parameters.get("geo-city")
-    if city is None:
-        return None
-
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
 
 def makeWebhookResult(data):
