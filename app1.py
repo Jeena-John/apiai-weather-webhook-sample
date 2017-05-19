@@ -58,8 +58,8 @@ def makeWebhookResult(OS):
     with open("tyy-4io.txt","r")as ins:
         for line in ins:
             if OS in line:
-                matched_line=line
-                break
+            matched_line=line
+            break
          
     columns=matched_line.split('\t')
     title= columns[0]
