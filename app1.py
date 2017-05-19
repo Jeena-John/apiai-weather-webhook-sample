@@ -98,7 +98,7 @@ def makeWebhookResult(data):
     return {
         "speech": data,
         "displayText": data,
-        "data": {"telegram":data},
+        #"data": {"telegram":data},
         #"contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
