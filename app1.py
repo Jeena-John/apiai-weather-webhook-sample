@@ -45,7 +45,11 @@ def processRequest(req):
     OS = parameters.get("OS")
     if OS is None:
         return {}
-    yql_query ="OS"
+    city = parameters.get("geo-city")
+    if city is None:
+        return {}
+
+    yql_query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
     if yql_query is None:
         return {}
@@ -85,17 +89,17 @@ def makeWebhookResult(data,OS):
 
     # print(json.dumps(item, indent=4))
 
-   # speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-          #   ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+             ", the temperature is " + condition.get('temp') + " " + units.get('temperature') + " OS = " + OS
 
-    with open("tyy-4io.txt","r")as ins:
-        for line in ins:
-            if OS in line:
-                matched_line=line
-                break
-                columns=matched_line.split('\t')
+    #with open("tyy-4io.txt","r")as ins:
+     #   for line in ins:
+      #      if OS in line:
+       #         matched_line=line
+        #        break
+         #       columns=matched_line.split('\t')
                 
-    speech="OS"+columns[0]
+    #speech="OS"+columns[0]
     print("Response:")
     print(speech)
 
