@@ -54,7 +54,7 @@ def processRequest(req):
 
 def makeWebhookResult(OS):
     #speech = " OS = " + OS
-    with open("tyy-4io.txt","r")as ins:
+    with open("tyy-4io.txt","r") as ins:
         for line in ins:
             if OS in line:
                 matched_line=line
@@ -64,8 +64,9 @@ def makeWebhookResult(OS):
     price= columns[4]
     productUrl=columns[5]
     
-    speech="Here is a phone that suits your needs " + title + " priced at Rs." + price  + ".More details at  " + productUrl 
-     print("Response:")
+    #speech="Here is a phone that suits your needs " + title + " priced at Rs." + price  + ".More details at  " + productUrl 
+    speech = matched_line
+    print("Response:")
     print(speech)
 
     return {
