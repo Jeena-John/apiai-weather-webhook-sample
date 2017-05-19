@@ -60,10 +60,14 @@ def makeWebhookResult(OS):
             if OS in line:
                 matched_line=line
                 break
-         #       columns=matched_line.split('\t')
-                
-    speech="OS = "+ OS + "matched_line = " + matched_line
-    print("Response:")
+         
+    columns=matched_line.split('\t')
+    title= columns[0]
+    price= columns[4]
+    productUrl=columns[5]
+    
+    speech="Here is a phone that suits your needs " + title + " priced at Rs." + price  + ".More details at  " + productUrl 
+     print("Response:")
     print(speech)
 
     return {
