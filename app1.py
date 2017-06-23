@@ -58,7 +58,7 @@ def makeWebhookResult(OS):
         for line in ins:
             if OS in line:
                 matched_line=line
-                #break
+                break
     columns = matched_line.split('\t')
     title = columns[0]
     price = columns[4]
