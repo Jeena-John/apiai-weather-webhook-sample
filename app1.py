@@ -56,15 +56,9 @@ def makeWebhookResult(OS):
     #speech = " OS = " + OS
     with open("tyy-4io.txt","r") as ins:
         for line in ins:
-           # if OS in line:
-            #    matched_line=line
-             
-             if isinstance('line',OS) or (not line):
-                break
-                for line in ins:
-                    yield line
-                    
-               # break
+            if OS in line:
+            matched_line=line
+            break
     columns = matched_line.split('\t')
     title = columns[0]
     price = columns[4]
