@@ -61,13 +61,12 @@ def makeWebhookResult(OS):
                  break
     columns = matched_line.split('\t')
     title = columns[0]
-    description = columns[1]
     price = columns[4]
     productUrl = columns[5]
-    productBrand = columns[6]
+    
     
     #speech="Here is a phone that suits your needs " + title + "\nPriced at Rs." + price + ".\nMore details at  " + productUrl 
-    speech = title + description + price + productUrl + productBrand
+    speech = title + price + productUrl
     print("Response:")
     print(speech)
 
