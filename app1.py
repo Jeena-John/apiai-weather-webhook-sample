@@ -59,8 +59,9 @@ def makeWebhookResult(OS):
            # if OS in line:
             #    matched_line=line
              
-                if not line:
-                    break
+             if isinstance('line',OS) or (not line):
+                break
+                for line in ins:
                     yield line
                     
                # break
